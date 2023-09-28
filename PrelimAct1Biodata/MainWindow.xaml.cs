@@ -80,8 +80,7 @@ namespace PrelimAct1Biodata
 
         private void saveBttn_Click(object sender, RoutedEventArgs e)
         {
-
-            string name = "Name: "+nameBox.Text.ToUpper() + " " + nameBox2.Text.ToUpper() + ". "+ nameBox1.Text.ToUpper();
+            string name = "Name: " + nameBox.Text.ToUpper() + " " + nameBox2.Text.ToUpper() + ". " + nameBox1.Text.ToUpper();
             string address = "Address: " + addressBox.Text.ToUpper() + ", " + addressBox1.Text.ToUpper();
             string birthday = "Birthday: " + datePicker1.Text.ToUpper();
             string age = "Age: " + ageBox.Text.ToUpper();
@@ -89,16 +88,28 @@ namespace PrelimAct1Biodata
             string status = "Civil status: MARRIED";
             string nation = "Nationality: " + nationBox.Text.ToUpper();
             string contact = "Contact: " + contactBox.Text.ToUpper();
-            if (maleBttn.IsEnabled) {
+            
+            if (maleBttn.IsEnabled)
+            {
                 gender = "Gender: MALE";
-            }
+            }            
             if (singleBttn.IsEnabled)
             {
                 status = "Civil status: SINGLE";
+            } 
+            if (nameBox.Text == "" || nameBox2.Text == "" || nameBox1.Text == "" || addressBox.Text == "" || addressBox1.Text == "" || datePicker1.Text == "" || ageBox.Text == "" || nationBox.Text == "" || contactBox.Text == "")
+            {
+                MessageBox.Show("Please complete all information.", "Notice!");
             }
-
-            string info = name + "\n" + address + "\n" + birthday + "\n" + age + "\n" + gender + "\n" + status+"\n"+ nation + "\n" + contact;
-            MessageBox.Show(info, "Information");
+            else if (marriedBttn.IsEnabled == true && singleBttn.IsEnabled == true) {
+                MessageBox.Show("Please complete all information.", "Notice!");
+            }
+            else
+            {
+                string info = name + "\n" + address + "\n" + birthday + "\n" + age + "\n" + gender + "\n" + status + "\n" + nation + "\n" + contact;
+                MessageBox.Show(info, "Information");
+            }
+                        
         }
         private void ageBox_KeyDown(object sender, KeyEventArgs e)
         {
